@@ -11,10 +11,12 @@ namespace DogApp.Controllers
 {
     public class DogsController : Controller
     {
+        private readonly IDogService _dogservice;
         private readonly ApplicationDbContext context;
 
         public DogsController(ApplicationDbContext context)
         {
+            this._dogservice = dogService;
             this.context = context;
         }
 
@@ -29,7 +31,12 @@ namespace DogApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                var created-_dogservice.Create(bindingModel.Name, bindingModel.Age, bindingModel.Breed, bindingModel.Picture);
+                if (created)
+                {
+                    return this.RedirectToAction("Succes");
+                }
+
                 Dog dogFromDb = new Dog
                 {
                     Name = bindingModel.Name,
